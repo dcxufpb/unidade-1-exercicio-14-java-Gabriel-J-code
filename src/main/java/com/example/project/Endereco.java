@@ -48,5 +48,58 @@ public class Endereco {
         return this.cep;
     }
 
+    public String dadosEndereco(){        
+
+        validarCamposObrigatorios();
+
+        String _NUMERO = "s/n";
+        if (this.getNumero() > 0){
+            _NUMERO = Integer.toString(this.getNumero());
+        }
+        
+        String _COMPLEMENTO = "";
+        if (!isEmpty(this.getComplemento())){
+            _COMPLEMENTO = " " + this.getComplemento();
+        }
+    
+        String _BAIRRO = "";
+        if(!isEmpty(this.getBairro())){
+            _BAIRRO = this.getBairro() + " - " ;
+        }
+    
+        String _CEP = "";
+        if(!isEmpty(this.getCep())){
+            _CEP = "CEP:" + this.getCep();
+        }
+
+        String BREAK = System.lineSeparator();
+
+        String nota = "";
+        nota += String.format("%s, %s%s",this.getLogradouro(),_NUMERO,_COMPLEMENTO) + BREAK;
+        nota += String.format("%s%s - %s",_BAIRRO,this.getMunicipio(),this.getEstado()) + BREAK;
+        nota += String.format("%s",_CEP);
+            
+        return nota;
+    }
+
+    public void validarCamposObrigatorios(){
+
+		if (isEmpty(this.getLogradouro())){
+			throw new RuntimeException("O campo logradouro do endereço é obrigatório");
+		}		
+		if (isEmpty(this.getMunicipio())){
+			throw new RuntimeException("O campo município do endereço é obrigatório");
+		}
+		if (isEmpty(this.getEstado())){
+			throw new RuntimeException("O campo estado do endereço é obrigatório");
+		} 		
+    }
+
+    private static boolean isEmpty(String s){
+		if (s == null) return true;
+		if (s.equals("")) return true;
+		return false;
+	}
+
 
 }
