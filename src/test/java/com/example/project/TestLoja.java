@@ -10,39 +10,37 @@ public class TestLoja {
 
 	private String TEXTO_ESPERADO_LOJA_COMPLETA = "Loja 1" + BREAK + "Log 1, 10 C1" + BREAK + "Bai 1 - Mun 1 - E1"
 			+ BREAK + "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK
-			+ "IE: 123456789" + BREAK;
+			+ "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_NUMERO = "Loja 1" + BREAK + "Log 1, s/n C1" + BREAK + "Bai 1 - Mun 1 - E1" + BREAK
 			+ "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK
-			+ "IE: 123456789" + BREAK;
+			+ "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_COMPLEMENTO = "Loja 1" + BREAK + "Log 1, 10" + BREAK + "Bai 1 - Mun 1 - E1"
 			+ BREAK + "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK
-			+ "IE: 123456789" + BREAK;
+			+ "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_BAIRRO = "Loja 1" + BREAK + "Log 1, 10 C1" + BREAK + "Mun 1 - E1" + BREAK
 			+ "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK
-			+ "IE: 123456789" + BREAK;
+			+ "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_CEP = "Loja 1" + BREAK + "Log 1, 10 C1" + BREAK + "Bai 1 - Mun 1 - E1" + BREAK
-			+ "Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789"
-			+ BREAK;
+			+ "Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_TELEFONE = "Loja 1" + BREAK + "Log 1, 10 C1" + BREAK + "Bai 1 - Mun 1 - E1"
-			+ BREAK + "CEP:11111-111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789"
-			+ BREAK;
+			+ BREAK + "CEP:11111-111" + BREAK + "Obs 1" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_OBSERVACAO = "Loja 1" + BREAK + "Log 1, 10 C1" + BREAK + "Bai 1 - Mun 1 - E1"
 			+ BREAK + "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "" + BREAK + "CNPJ: 11.111.111/1111-11" + BREAK
-			+ "IE: 123456789" + BREAK;
+			+ "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_NUMERO_SEM_COMPLEMENTO = "Loja 1" + BREAK + "Log 1, s/n" + BREAK
 			+ "Bai 1 - Mun 1 - E1" + BREAK + "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK
-			+ "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789" + BREAK;
+			+ "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789";
 
 	private String TEXTO_ESPERADO_SEM_NUMERO_SEM_COMPLEMENTO_SEM_BAIRRO = "Loja 1" + BREAK + "Log 1, s/n" + BREAK
 			+ "Mun 1 - E1" + BREAK + "CEP:11111-111 Tel (11) 1111-1111" + BREAK + "Obs 1" + BREAK
-			+ "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789" + BREAK;
+			+ "CNPJ: 11.111.111/1111-11" + BREAK + "IE: 123456789";
 
 	private String NOME_LOJA = "Loja 1";
 	private String LOGRADOURO = "Log 1";
@@ -238,25 +236,32 @@ public class TestLoja {
 	@Test
 	public void exercicio02_Customizado() {
 		// Defina seus próprios valores para as variáveis a seguir
-		String nomeLoja = "";
-		String logradouro = "";
-		int numero = 0;
+		String nomeLoja = "Tropical";
+		String logradouro = "Rua siqueira Campos";
+		int numero = 580;
 		String complemento = "";
-		String bairro = "";
-		String municipio = "";
-		String estado = "";
-		String cep = "";
-		String telefone = "";
+		String bairro = "Centro";
+		String municipio = "Paulista";
+		String estado = "Pernambuco";
+		String cep = "53401-320";
+		String telefone = "(81) 3438-5714";
 		String observacao = "";
-		String cnpj = "";
-		String inscricaoEstadual = "";
+		String cnpj = "37.886.772/0001-82";
+		String inscricaoEstadual = "4232303-79";
+
 
 		Loja lojaCustomizada = new Loja(nomeLoja,
 				new Endereco(logradouro, numero, complemento, bairro, municipio, estado, cep), telefone, observacao,
 				cnpj, inscricaoEstadual);
 
 		// E atualize o texto esperado abaixo
-		rodarTestarRetorno("" + BREAK, lojaCustomizada);
+		rodarTestarRetorno("Tropical" + BREAK + 
+		"Rua siqueira Campos, 580" + BREAK + 
+		"Centro - Paulista - Pernambuco" + BREAK + 
+		"CEP:53401-320 Tel (81) 3438-5714" + BREAK + 
+		"" + BREAK + 
+		"CNPJ: 37.886.772/0001-82" + BREAK + 
+		"IE: 4232303-79", lojaCustomizada);
 	}
 
 	private void rodarTestarRetorno(String expected, Loja loja) {
