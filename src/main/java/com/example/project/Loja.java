@@ -52,7 +52,7 @@ public class Loja {
         return this.endereco;
     }
 
-    public Venda vender(Calendar datahora, int ccf,int coo){
+    public Venda vender(Calendar datahora, String ccf,String coo){
         Venda nova_venda = new Venda(this, datahora, ccf, coo);
         this.vendas.add(nova_venda);
         return nova_venda;

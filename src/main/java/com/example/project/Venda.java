@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 public class Venda {
     private Loja loja;
     private Calendar DataHora;
-    private int ccf;
-    private int coo;
+    private String ccf;
+    private String coo;
     private ArrayList<ItemVenda> itens;
 
     public Loja getLoja() {
@@ -17,17 +17,17 @@ public class Venda {
     public Calendar getDataHora() {
         return DataHora;
     }
-    public int getCoo() {
+    public String getCoo() {
         return coo;
     }
-    public int getCcf() {
+    public String getCcf() {
         return ccf;
     }
     public ArrayList<ItemVenda> getItens(){
         return itens;
     }
 
-    public Venda(Loja loja, Calendar DataHora, int ccf, int coo) {
+    public Venda(Loja loja, Calendar DataHora, String ccf, String coo) {
         this.loja = loja;
         this.DataHora = DataHora;
         this.ccf = ccf;
@@ -42,18 +42,24 @@ public class Venda {
 
         String _datatime = dtf.format(this.DataHora.getTime());
 
-        String dados = String.format("%sV CCF:%06d COO:%06d",_datatime,this.getCcf(),this.getCoo());        
+        String dados = String.format("%sV CCF:%s COO:%s",_datatime,this.getCcf(),this.getCoo());        
         return dados;
     }
     
     private void validarCamposObrigatorios() {
-        if (this.ccf<=0){
+        if (isEmpty(this.ccf)){
             throw new RuntimeException("O campo ccf da venda não é valido");
         }
-        if (this.coo<=0){
+        if (isEmpty(this.coo)){
             throw new RuntimeException("O campo coo da venda não é valido");
         }        
     }
+
+    private static boolean isEmpty(String s){
+		if (s == null) return true;
+		if (s.equals("")) return true;
+		return false;
+	}
 
     public void adicionar_item(int item, Produto produto,int quantidade){
 		validar_item(produto, quantidade);		
