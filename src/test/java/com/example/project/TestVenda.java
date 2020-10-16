@@ -83,8 +83,8 @@ public class TestVenda {
     Produto produto2 = new Produto(234567, "Produto2", "m", 1.01, "");
 
     String TEXTO_ESPERADO_DADOS_ITEM_fUNCIONAL = "ITEM CODIGO DESCRICAO QTD UN VL UNIT(R$) ST VL ITEM(R$)" + BREAK +
-    "1 123456 Produto1 2 kg 4,35  8,70" + BREAK +
-    "2 234567 Produto2 4 m 1,01  4,04";    
+    "1 123456 Produto1 2 kg 4.35  8.70" + BREAK +
+    "2 234567 Produto2 4 m 1.01  4.04";    
 
     //dados_itens
     @Test
@@ -149,10 +149,10 @@ public class TestVenda {
     "29/10/2015 11:09:47V CCF:021784 COO:035804"+ BREAK +
     "   CUPOM FISCAL"+ BREAK +
     "ITEM CODIGO DESCRICAO QTD UN VL UNIT(R$) ST VL ITEM(R$)"+ BREAK +
-    "1 123456 Produto1 2 kg 4,35  8,70"+ BREAK +
-    "2 234567 Produto2 4 m 1,01  4,04"+ BREAK +
+    "1 123456 Produto1 2 kg 4.35  8.70"+ BREAK +
+    "2 234567 Produto2 4 m 1.01  4.04"+ BREAK +
     "------------------------------"+ BREAK +
-    "TOTAL R$ 12,74";
+    "TOTAL R$ 12.74";
     @Test
     public void test_venda_imprimir_cupom(){
         Venda venda = LOJA_COMPLETA.vender(datahora,ccf,coo);
